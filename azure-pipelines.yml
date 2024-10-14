@@ -6,11 +6,11 @@ steps:
   inputs:
     versionSpec: '16.x'  # Static Web Apps require Node.js for build, even for HTML projects
 
-- script: |
-    echo "Building Static Web App"
-    
-  displayName: 'Build Static Web App'
-
+- powershell: |
+    npm install
+    npm run build
+  displayName: 'Install and Build Project'
+  
 - task: AzureStaticWebApp@0
   inputs:
     app_location: '/build'  # Change this to the directory containing your index.html if not in root
