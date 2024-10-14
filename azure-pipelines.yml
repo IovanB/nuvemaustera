@@ -8,7 +8,7 @@ steps:
 
 - script: |
     echo "Building Static Web App"
-    # Install any dependencies or execute any build commands if needed.
+    
   displayName: 'Build Static Web App'
 
 - task: AzureStaticWebApp@0
