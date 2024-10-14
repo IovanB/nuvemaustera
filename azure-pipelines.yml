@@ -1,0 +1,20 @@
+pool:
+  name: MyAgent  # This specifies the self-hosted agent pool you've created
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '16.x'  # Static Web Apps require Node.js for build, even for HTML projects
+
+- script: |
+    echo "Building Static Web App"
+    # Install any dependencies or execute any build commands if needed.
+  displayName: 'Build Static Web App'
+
+- task: AzureStaticWebApp@0
+  inputs:
+    app_location: '/'  # Change this to the directory containing your index.html if not in root
+    output_location: '/'  # Change if you want to specify a different directory for output
+    azure_static_web_apps_api_token: $(deployment_token)
+  env:
+    deployment_token: $(deployment_token)  # Set in pipeline variables
