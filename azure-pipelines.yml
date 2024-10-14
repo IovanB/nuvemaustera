@@ -13,7 +13,7 @@ steps:
 
 - task: AzureStaticWebApp@0
   inputs:
-    app_location: '/'  # Change this to the directory containing your index.html if not in root
+    app_location: '/build'  # Change this to the directory containing your index.html if not in root
     output_location: '/'  # Change if you want to specify a different directory for output
     azure_static_web_apps_api_token: $(deployment_token)
   env:
