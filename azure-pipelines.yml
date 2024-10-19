@@ -14,4 +14,16 @@ steps:
   inputs:
     rootFolderOrFile: '$(build.sourcesDirectory)'
     includeRootFolder: false
+
+# Publish build artifacts (optional step, useful if you want to store the HTML files for reference)
 - task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(build.sourcesDirectory)'  # Path to your HTML files
+    ArtifactName: 'static-site'
+
+# Deploy to Azure Static Web Apps
+- task: AzureStaticWebApp@0
+  inputs:
+    app_location: '/'  # The root location where your HTML files are stored
+    output_location: ''  # No build output, leave it empty for static files
+    azure_static_web_apps_api_token: $(AZURE_STATIC_WEB_APPS_API_TOKEN)  # Set this as a pipeline secret
