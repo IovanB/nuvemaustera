@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  name: MyAgent
+  name: Default
 
 steps:
 - task: ArchiveFiles@2
